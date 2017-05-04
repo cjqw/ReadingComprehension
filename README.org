@@ -1,0 +1,4 @@
+* Reading Comprehension
+This repo is the final project of nature language processing.
+We will solve reading comprehension problems with the help of deep learning.
+More requirements can be seen in [[file:docs/nlp4u-assign-finalproject.pdf][this file]] .
