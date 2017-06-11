@@ -7,3 +7,5 @@ __pycache__/
 
 # data set
 src/data/
+src/model.pkl.gz
+src/embedding
