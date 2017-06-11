@@ -1,0 +1,17 @@
+#+TITLE: NLP PROJECT REPORT
+#+AUTHOR: Qiu Wei
+* Method
+- model: A enhancement on /AttentiveReader/
+- paper: [[https://arxiv.org/pdf/1606.02858v2.pdf][A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task.]]
+The source code is forked from [[https://github.com/danqi/rc-cnn-dailymail][here]] .
+* Environment
+- OS: Ubuntu
+- Framework: Theano 0.8.0
+- Single thread with CPU
+- Trained for 3 days (20 to 30 epoches)
+- the options are in file:src/Makefile
+- Other settings are in file:docs/pip.list
+* Result 
+- Dev accuracy: 51.80 %
+- Train accuracy: 66.5%
+- 

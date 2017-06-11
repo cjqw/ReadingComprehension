@@ -38,7 +38,8 @@ def load_data(in_file, max_example = 30000, relabeling=True):
                 line = line.split('\t')
                 question = line[0]
                 answer = line[1]
-                choices = line[3].split('|')
+                choices = line[len(line) - 1].split('|')
+                # answer = choices[0]
 
         if file_end: break
 
@@ -46,9 +47,13 @@ def load_data(in_file, max_example = 30000, relabeling=True):
         for i in range(10):
             choice = choices[i]
             entity = entities[i]
-            document = document.replace(choice,entity)
+            document = document.replace(' ' + choice,' ' + entity)
+            document = document.replace('.' + choice,'.' + entity)
+            document = document.replace(',' + choice,',' + entity)            
             answer = answer.replace(choice,entity)
-            question = question.replace(choice,entity)
+            question = question.replace(' ' + choice,' ' + entity)
+            question = question.replace('.' + choice,'.' + entity)
+            question = question.replace(',' + choice,',' + entity)            
 
         question.replace('xxxxx','@placeholder')
 
@@ -89,7 +94,7 @@ def build_dict(sentences, max_words=50000):
 
 
 def vectorize(examples, word_dict, entity_dict,
-              sort_by_len=True, verbose=True):
+              sort_by_len=False, verbose=True):
     """
         Vectorize `examples`.
         in_x1, in_x2: sequences for document and question respecitvely.
@@ -100,6 +105,8 @@ def vectorize(examples, word_dict, entity_dict,
     in_x2 = []
     in_l = np.zeros((len(examples[0]), len(entity_dict))).astype(config._floatX)
     in_y = []
+
+
     for idx, (d, q, a) in enumerate(zip(examples[0], examples[1], examples[2])):
         d_words = d.split(' ')
         q_words = q.split(' ')

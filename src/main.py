@@ -11,7 +11,6 @@ import config
 import logging
 import nn_layers
 
-
 def gen_examples(x1, x2, l, y, batch_size):
     """
         Divide examples into batches of size `batch_size`.
@@ -102,7 +101,15 @@ def build_fn(args, embeddings):
     test_prob = lasagne.layers.get_output(network, deterministic=True) * in_l
     test_prediction = T.argmax(test_prob, axis=-1)
     acc = T.sum(T.eq(test_prediction, in_y))
-    test_fn = theano.function([in_x1, in_mask1, in_x2, in_mask2, in_l, in_y], acc)
+
+    test_prediction_with_print = theano.printing.Print()(test_prediction[0])
+    acc_with_print = T.sum(T.eq(test_prediction_with_print, in_y))
+
+    if args.test_only:
+        test_fn = theano.function([in_x1, in_mask1, in_x2, in_mask2, in_l, in_y], acc_with_print)
+    else:
+        test_fn = theano.function([in_x1, in_mask1, in_x2, in_mask2, in_l, in_y], acc)
+
 
     # Train functions
     train_prediction = lasagne.layers.get_output(network) * in_l
@@ -180,6 +187,11 @@ def main(args):
 
     logging.info('-' * 50)
     logging.info('Intial test..')
+    if args.test_only:
+        for i in range(1,11):
+            token = '@entity' + str(i)
+            print(token)
+            print(entity_dict[token])
     dev_x1, dev_x2, dev_l, dev_y = utils.vectorize(dev_examples, word_dict, entity_dict)
     assert len(dev_x1) == args.num_dev
     all_dev = gen_examples(dev_x1, dev_x2, dev_l, dev_y, args.batch_size)

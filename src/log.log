@@ -1,0 +1,55 @@
+06-11 14:52 main.py --train_file ./data/train.txt --dev_file ./data/dev.txt --embedding_file ./embedding/glove.6B.100d.txt --num_epoches 1000 --pre_trained model.pkl.gz --eval_iter 150 --test_only y --log_file log.log
+06-11 14:52 --------------------------------------------------
+06-11 14:52 Load data files..
+06-11 14:52 ********** Train
+06-11 14:52 #Examples: 30000
+06-11 14:52 ********** Dev
+06-11 14:52 #Examples: 2000
+06-11 14:52 --------------------------------------------------
+06-11 14:52 Build dictionary..
+06-11 14:52 #Words: 39748 -> 39748
+06-11 14:52 (',', 1225147)
+06-11 14:52 ('the', 670651)
+06-11 14:52 ('and', 580391)
+06-11 14:52 ('to', 359806)
+06-11 14:52 ('a', 294992)
+06-11 14:52 ...
+06-11 14:52 ('impr@entity4mptu', 1)
+06-11 14:52 ('boos', 1)
+06-11 14:52 ('excite@entity8t', 1)
+06-11 14:52 ('strengthe@entity6', 1)
+06-11 14:52 ('soo@entity9', 1)
+06-11 14:52 Entity markers: 2675
+06-11 14:52 --------------------------------------------------
+06-11 14:52 Embeddings: 39750 x 100
+06-11 14:52 Loading embedding file: ./embedding/glove.6B.100d.txt
+06-11 14:53 Pre-trained: 22420 (56.40%)
+06-11 14:53 Compile functions..
+06-11 14:53 Loaded pre-trained model: model.pkl.gz
+06-11 14:53 ('epoch', 11)
+06-11 14:53 ('n_updates', 11100)
+06-11 14:53 #params: 5079755
+06-11 14:53 <lasagne.layers.input.InputLayer object at 0x7fc9e005d350>
+06-11 14:53 <lasagne.layers.embedding.EmbeddingLayer object at 0x7fc9e005d3d0>
+06-11 14:53 <lasagne.layers.noise.DropoutLayer object at 0x7fc9e0067e50>
+06-11 14:53 <lasagne.layers.input.InputLayer object at 0x7fc9e005d390>
+06-11 14:53 <lasagne.layers.recurrent.GRULayer object at 0x7fc9e0067ed0>
+06-11 14:53 <lasagne.layers.noise.DropoutLayer object at 0x7fc9e00121d0>
+06-11 14:53 <lasagne.layers.recurrent.GRULayer object at 0x7fc9e0012550>
+06-11 14:53 <lasagne.layers.merge.ConcatLayer object at 0x7fc9e0067e10>
+06-11 14:53 <lasagne.layers.input.InputLayer object at 0x7fc9e12a8ed0>
+06-11 14:53 <lasagne.layers.embedding.EmbeddingLayer object at 0x7fc9e0067dd0>
+06-11 14:53 <lasagne.layers.noise.DropoutLayer object at 0x7fc9e001b310>
+06-11 14:53 <lasagne.layers.input.InputLayer object at 0x7fc9e0067d90>
+06-11 14:53 <lasagne.layers.recurrent.GRULayer object at 0x7fc9e001b390>
+06-11 14:53 <lasagne.layers.noise.DropoutLayer object at 0x7fc9e001f150>
+06-11 14:53 <lasagne.layers.recurrent.GRULayer object at 0x7fc9e001f4d0>
+06-11 14:53 <lasagne.layers.merge.ConcatLayer object at 0x7fc9e001b1d0>
+06-11 14:53 <nn_layers.BilinearAttentionLayer object at 0x7fc9e002c150>
+06-11 14:53 <lasagne.layers.dense.DenseLayer object at 0x7fc9e002c290>
+06-11 14:54 Done.
+06-11 14:54 --------------------------------------------------
+06-11 14:54 Namespace(att_func='bilinear', batch_size=32, bidir=True, debug=False, dev_file='./data/dev.txt', dropout_rate=0.2, embedding_file='./embedding/glove.6B.100d.txt', embedding_size=100, eval_iter=150, grad_clipping=10.0, hidden_size=128, learning_rate=0.1, log_file='log.log', max_dev=None, model_file='model.pkl.gz', num_dev=2000, num_epoches=1000, num_labels=2675, num_layers=1, num_train=30000, optimizer='sgd', pre_trained='model.pkl.gz', random_seed=1013, relabeling=True, rnn_layer=<class 'lasagne.layers.recurrent.GRULayer'>, rnn_output_size=256, rnn_type='gru', test_only=True, train_file='./data/train.txt', vocab_size=39750)
+06-11 14:54 --------------------------------------------------
+06-11 14:54 Intial test..
+06-11 14:54 Vectorization: processed 0 / 2000
