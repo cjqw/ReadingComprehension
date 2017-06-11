@@ -4,8 +4,7 @@ all:
         --embedding_file ./embedding/glove.6B.100d.txt \
 	--num_epoches 100 \
 	--pre_trained model.pkl.gz \
-	--eval_iter 150 \
-	--batch_size 1
+	--eval_iter 150 
 
 test:
 	python main.py --train_file ./data/train.txt \

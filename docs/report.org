@@ -9,9 +9,13 @@ The source code is forked from [[https://github.com/danqi/rc-cnn-dailymail][here
 - Framework: Theano 0.8.0
 - Single thread with CPU
 - Trained for 3 days (20 to 30 epoches)
-- the options are in file:src/Makefile
+- The options are in file:src/Makefile
 - Other settings are in file:docs/pip.list
 * Result 
 - Dev accuracy: 51.80 %
 - Train accuracy: 66.5%
-- 
+- Test result is in file:result/test.result
+* Future Work
+- Use CPU and multi-threading to speed up the training phase.
+- Use more time for training.
+- Make full use of the semantics of the 10 choices.
